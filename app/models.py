@@ -22,6 +22,7 @@ class Review(db.Model):
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)
     comment = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
 
 
 class User(db.Model):
@@ -33,7 +34,8 @@ class User(db.Model):
     user_password = db.Column(db.String(255))
     profile_pic = db.Column(db.String)
     User_bio = db.Column(db.String)
-    pitches = db.Relationship('Pitch', backref = 'user' lazy = 'dynamic')
+    pitches = db.relationship('Pitch', backref = 'user', lazy = 'dynamic')
+    reviews = db.relationship('Review', backref = 'reviews', lazy = 'dynamic')
     
 
 
