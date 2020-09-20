@@ -12,3 +12,4 @@ class NewPitchForm(FlaskForm):
 
     category = SelectField('Category', validators=[Required()], choices=['Pickup lines', 'interview pitch', 'product pitch', 'promotion pitch'])
     pitch = TextAreaField('Pitch', validators=[Required()])
+    submit = SubmitField('Submit')

@@ -20,17 +20,22 @@ def review(id):
 
     return render_template('reviews.html', title = title)
 
-@main.route('/add_Pitch')
+@main.route('/add_Pitch', methods = ['GET','POST'])
 def newpitch():
 
     form = NewPitchForm()
 
     if form.validate_on_submit():
         category = form.category.data
-        Pitch = form.pitch.data
+        Pitch_body = form.pitch.data
 
-        newpitch = Pitch(category,Pitch)
+        new_pitch = Pitch(category = category,Pitch = Pitch_body)
 
+        new_pitch.save_pitch()
+
+        return redirect(url_for('.pitch'))
+
+    
     title = 'New pitch'
 
-    return render_template('newpitch.html', title = title)
+    return render_template('newpitch.html', title = title, form = form)
