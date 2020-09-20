@@ -23,3 +23,11 @@ class Review(db.Model):
     comment = db.Column(db.String)
 
 
+class User(db.model):
+    __tablename__ = 'users'
+
+    user_id = db.Column(db.Integer, primary_key = True)
+    user_name = db.Column(db.String(255))
+    user_email = db.Column(db.String(255))
+    user_password = db.Column(db.String(255))
+
