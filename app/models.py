@@ -10,7 +10,7 @@ class Pitch(db.Model):
     Pitch = db.Column(db.String)
     Posting = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-
+    reviews = db.relationship('Review', backref = 'pitch', lazy = 'dynamic')
 
 
     
@@ -23,6 +23,7 @@ class Review(db.Model):
     downvotes = db.Column(db.Integer)
     comment = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.pitch_id"))
 
 
     def save_review(self):
