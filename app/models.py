@@ -12,6 +12,10 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     reviews = db.relationship('Review', backref = 'pitch', lazy = 'dynamic')
 
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+
 
     
 

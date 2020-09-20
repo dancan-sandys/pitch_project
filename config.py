@@ -1,5 +1,6 @@
 class Config():
     
+    SECRET_KEY = 'WTF forms secret key'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sandys:Stanford1*@localhost/pitch'
     
     @staticmethod
