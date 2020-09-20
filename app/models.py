@@ -25,6 +25,12 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
 
 
+    def save_review(self):
+        
+        db.session.add(self)
+        db.session.commit()
+
+
 class User(db.Model):
     __tablename__ = 'users'
 
@@ -35,7 +41,7 @@ class User(db.Model):
     profile_pic = db.Column(db.String)
     User_bio = db.Column(db.String)
     pitches = db.relationship('Pitch', backref = 'user', lazy = 'dynamic')
-    reviews = db.relationship('Review', backref = 'reviews', lazy = 'dynamic')
+    reviews = db.relationship('Review', backref = 'user', lazy = 'dynamic')
     
 
 
