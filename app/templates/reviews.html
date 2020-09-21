@@ -1,6 +1,12 @@
 {%extends 'base.html'%}
+{%import 'bootstrap/wtf.html' as wtf%}
 
 {% block content %}
     <a href="/">Home page</a>
+    <p>{{pitch.category}}</p>
+
+    <p>Yes</p>
+
+    {{wtf.quick_form(form)}}
     
 {%endblock%}

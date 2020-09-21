@@ -1,9 +1,13 @@
+
 {%extends 'base.html'%}
 
 {% block content %}
-    <a href="/reviews/4">View reviews</a>
     <a href="/add_Pitch">Add Pitch</a>
-    <p>{{pitches}}</p>
 
+    {%for pitch in pitches%}
+    <p >{{pitch.category}}</p>
+    <p>{{pitch.Posting}}</p>
+    <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
+    {%endfor%}
 
 {%endblock%}

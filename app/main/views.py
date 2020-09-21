@@ -1,8 +1,8 @@
 from flask import render_template, redirect, url_for
-from ..models import User, Pitch
+from ..models import User, Pitch,Review
 from . import main
 from .. import db
-from .forms import NewPitchForm
+from .forms import NewPitchForm, ReviewForm
 from ..models import Pitch
 
 @main.route('/')
@@ -13,12 +13,28 @@ def pitch():
 
     return render_template('index.html', pitches = pitches, title = title)
 
-@main.route('/reviews/<int:id>')
+@main.route('/reviews/<int:id>', methods = ['GET', 'POST'])
 def review(id):
 
     title = 'Reviews'
 
-    return render_template('reviews.html', title = title)
+    pitch = Pitch.query.filter_by(pitch_id = id).first()
+    form = ReviewForm()
+    if form.validate_on_submit():
+        
+        form = ReviewForm()
+
+        comment = form.comment.data
+        pitch_id = id
+
+        new_review = Review(comment = comment, pitch_id = pitch_id)
+
+        pitch_reviews = pitch.query.filter_by(pitch_id = pitch_id).all()
+
+        return render_template('reviews.html', title = title, pitch = pitch, form =form)
+
+
+    return render_template('reviews.html', title = title, pitch = pitch, form = form)
 
 @main.route('/add_Pitch', methods = ['GET','POST'])
 def newpitch():
