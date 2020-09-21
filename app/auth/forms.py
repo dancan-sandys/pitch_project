@@ -12,3 +12,5 @@ class SignInForm(FlaskForm):
     username = StringField('Username ', validators=[Required()])
     email = StringField('Email', validators=[Required(), Email()])
     password = PasswordField('Password', validators=[Required()])
+
+

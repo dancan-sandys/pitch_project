@@ -4,6 +4,7 @@ from . import main
 from .. import db
 from .forms import NewPitchForm, ReviewForm
 from ..models import Pitch
+from flask_login import login_required
 
 @main.route('/')
 def pitch():
@@ -14,6 +15,7 @@ def pitch():
     return render_template('index.html', pitches = pitches, title = title)
 
 @main.route('/reviews/<int:id>', methods = ['GET', 'POST'])
+@login_required
 def review(id):
 
     title = 'Reviews'
@@ -39,6 +41,7 @@ def review(id):
     return render_template('reviews.html', title = title, pitch = pitch, form = form)
 
 @main.route('/add_Pitch', methods = ['GET','POST'])
+@login_required
 def newpitch():
 
     form = NewPitchForm()
