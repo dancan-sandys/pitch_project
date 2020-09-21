@@ -6,6 +6,7 @@ from .forms import NewPitchForm, ReviewForm
 from ..models import Pitch
 from flask_login import login_required
 
+
 @main.route('/')
 def pitch():
 
