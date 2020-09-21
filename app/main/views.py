@@ -29,9 +29,11 @@ def review(id):
 
         new_review = Review(comment = comment, pitch_id = pitch_id)
 
-        pitch_reviews = pitch.query.filter_by(pitch_id = pitch_id).all()
+        new_review.save_review()
 
-        return render_template('reviews.html', title = title, pitch = pitch, form =form)
+        pitch_reviews = Review.query.filter_by(pitch_id = pitch_id).all()
+
+        return render_template('reviews.html', title = title, pitch = pitch, form =form, pitch_reviews = pitch_reviews)
 
 
     return render_template('reviews.html', title = title, pitch = pitch, form = form)
