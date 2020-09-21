@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+
+
+
+{%block content%}
+
+{{user.user_name}}
+
+{%if user.User_bio%}
+    <p>{{user.User_bio}}</p>
+{%else%}
+    <p>{{user.user_name}} does not have a bio</p>
+    
+{%endif%}
+    
+{%if user.profile_pic%}
+    <img src="{{user.profile_pic}}" alt=""> 
+
+{%else%}
+
+    <p>{{user.user_name}} does not have a profile picture</p>
+
+
+{%endblock%}

@@ -61,3 +61,14 @@ def newpitch():
     title = 'New pitch'
 
     return render_template('newpitch.html', title = title, form = form)
+
+@main.route('/profile/<uname>')
+def profile(uname):
+
+    user = User.query.filter_by(user_name = uname).first()
+
+    if user is None:
+
+        abort(404)
+
+    return render_template("profile/profile.html", user = user)

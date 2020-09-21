@@ -50,7 +50,8 @@ class User(UserMixin,db.Model):
     pitches = db.relationship('Pitch', backref = 'user', lazy = 'dynamic')
     reviews = db.relationship('Review', backref = 'user', lazy = 'dynamic')
     
-
+    def get_id(self):
+        return (self.user_id)
 
 
 @login_manager.user_loader

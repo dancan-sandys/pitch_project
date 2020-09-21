@@ -32,7 +32,7 @@ def login():
         user = User.query.filter_by(user_email = form.email.data).first()
 
         if user is not None:
-            login_user(user, login_form.remember.data)
+            login_user(user, form.remember.data)
             return redirect(request.args.get('next') or url_for('index.html'))
 
         flash ('invalid username or password')
