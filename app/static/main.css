@@ -15,13 +15,9 @@ nav{
     align-items: center;
     background-color: #37323E;
     padding: 2%;
-    margin-bottom: 10%;
+  
 }
 
 ul li a{
     color: white;
-}
-
-body{
-    color: #A37B73;
 }

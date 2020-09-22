@@ -1,0 +1,15 @@
+.form{
+    width: 80%;
+    align-items: center;
+    margin: 6%;
+    background-color: #e4fde1;
+    border-radius: 20px;
+    padding-top: 0.1px;
+    padding-bottom: 5%;
+}
+
+.note{
+    text-align: center;
+    padding: 2%;
+}
+
