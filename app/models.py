@@ -13,7 +13,9 @@ class Pitch(db.Model):
     Posting = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     reviews = db.relationship('Review', backref = 'pitch', lazy = 'dynamic')
+    votes = db.Column(db.Integer, default = 0)
 
+    
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()

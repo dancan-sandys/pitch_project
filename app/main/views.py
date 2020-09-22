@@ -15,6 +15,14 @@ def pitch():
 
     return render_template('index.html', pitches = pitches, title = title)
 
+@main.route('/categories')
+def categories():
+
+    pitches = Pitch.query.all()
+    title = 'Pitches'
+
+    return render_template('categorised.html', pitches = pitches, title = title)
+
 @main.route('/reviews/<int:id>', methods = ['GET', 'POST'])
 @login_required
 def review(id):
@@ -51,7 +59,7 @@ def newpitch():
         category = form.category.data
         Pitch_body = form.pitch.data
 
-        new_pitch = Pitch(category = category,Pitch = Pitch_body)
+        new_pitch = Pitch(category = category,Pitch = Pitch_body, votes = 0)
 
         new_pitch.save_pitch()
 
@@ -67,12 +75,14 @@ def newpitch():
 def profile(uname):
 
     user = User.query.filter_by(user_name = uname).first()
+    pitches = Pitch.query.filter_by(user_id = user.user_id)
+
 
     if user is None:
 
         abort(404)
 
-    return render_template("profile/profile.html", user = user)
+    return render_template("profile/profile.html", user = user, pitches = pitches)
 
 
 @main.route('/profile/form/<uname>', methods= ['POST','GET'])

@@ -7,6 +7,21 @@ body{
     font-family: 'Lobster Two', cursive;
 }
 
+.categories{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+}
+.category{
+    width: 500px;
+    border: 1px solid #37323E;
+    margin: 5%;
+    border-radius: 15px;
+    padding: 5%;
+    display: grid;
+    grid-template-columns: auto;
+    
+}
 
 nav ul{
     list-style: none;

@@ -1,0 +1,78 @@
+{%extends 'base.html'%}
+{%block content%}
+
+
+
+
+<div class="categories">
+    <div class="category card">
+        <h1>PickUp Lines.</h1>
+        {%for pitch in pitches|reverse()%}
+
+        {%if pitch.category == 'Pickup lines'%}
+        <p class="categoryName">category: {{pitch.category}}</p>
+
+        <p>Posted on {{pitch.Posting}}</p>
+        <p>{{pitch.votes}}</p>
+        <p><strong>The pitch:</strong>{{pitch.Pitch}}</p>
+        <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
+        {%endif%}
+
+        {%endfor%}
+    </div>
+
+
+    <div class="category card">
+        <h1>Interview Pitches.</h1>
+        {%for pitch in pitches|reverse()%}
+
+        {%if pitch.category == 'interview pitch'%}
+        <p class="categoryName">category: {{pitch.category}}</p>
+
+        <p>Posted on {{pitch.Posting}}</p>
+        <p>{{pitch.votes}}</p>
+        <p><strong>The pitch:</strong>{{pitch.Pitch}}</p>
+        <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
+        <hr>
+        {%endif%}
+
+        {%endfor%}
+    </div>
+
+
+    <div class="category card">
+        <h1>Product Pitches.</h1>
+        {%for pitch in pitches|reverse()%}
+
+        {%if pitch.category == 'product pitch'%}
+        <p class="categoryName">category: {{pitch.category}}</p>
+
+        <p>Posted on {{pitch.Posting}}</p>
+        <p>{{pitch.votes}}</p>
+        <p><strong>The pitch:</strong>{{pitch.Pitch}}</p>
+        <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
+        {%endif%}
+
+        {%endfor%}
+    </div>
+
+
+
+
+    <div class="category card">
+        <h1>Promotion Pitch lines.</h1>
+        {%for pitch in pitches|reverse()%}
+
+        {%if pitch.category == 'promotion pitch'%}
+        <p class="categoryName">category: {{pitch.category}}</p>
+
+        <p>Posted on {{pitch.Posting}}</p>
+        <p>{{pitch.votes}}</p>
+        <p><strong>The pitch:</strong>{{pitch.Pitch}}</p>
+        <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
+        {%endif%}
+
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

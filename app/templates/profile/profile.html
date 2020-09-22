@@ -28,7 +28,7 @@
 
     <div class="bio col-md-5">
         {%if user.User_bio%}
-        <p class = 'nobio'>{{user.User_bio}}</p>
+        <p class='nobio'>{{user.User_bio}}</p>
         <p><a href="/profile/form/{{user.user_name}}">Update bio</a></p>
         {%else%}
         <p class="nobio">{{user.user_name}} does not have a bio</p>
@@ -48,5 +48,20 @@
 
     {%endif%}
 </form>
+
+
+<div class="personalpitches">
+    <h4>Your Pitches Include</h4>
+    {%for pitch in pitches|reverse()%}
+    <div class="pitch card">
+        <p class="categoryName">category: {{pitch.category}}</p>
+
+        <p>Posted on {{pitch.Posting}}</p>
+        <p>{{pitch.votes}}</p>
+        <p><strong>The pitch:</strong>{{pitch.Pitch}}</p>
+        <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
+    </div>
+</div>
+{%endfor%}
 
 {%endblock%}
