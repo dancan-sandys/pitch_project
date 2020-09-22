@@ -17,9 +17,11 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to the Pitch", "email/Welcome user", user.user_email, user =user)
-        return redirect(url_for('.login'))
-
+        try:
+            mail_message("Welcome to the Pitch", "email/Welcome_user", user.user_email, user =user)
+            return redirect(url_for('.login'))
+        except:
+            return redirect(url_for('.login'))
         title = 'New Account'
 
     return render_template('auth/signup.html', form = form)
@@ -35,7 +37,7 @@ def login():
 
         if user is not None:
             login_user(user, form.remember.data)
-            return redirect(request.args.get('next') or url_for('index.html'))
+            return redirect(request.args.get('next') or url_for('main.pitch'))
 
         flash ('invalid username or password')
 

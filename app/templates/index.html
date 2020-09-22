@@ -1,21 +1,24 @@
-
 {%extends 'base.html'%}
 
 {%block styles%}
-    {{ super() }}
+{{ super() }}
 
-    <link rel="stylesheet" href="{{url_for('static',filename = 'index.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename = 'index.css')}}">
 
 {%endblock%}
 
 
 {% block content %}
-    
 
+<div class="pitches">
     {%for pitch in pitches%}
-    <p >{{pitch.category}}</p>
-    <p>{{pitch.Posting}}</p>
-    <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
+    <div class="pitch card">
+        <p class="categoryName" >category: {{pitch.category}}</p>
+
+        <p>Posted on {{pitch.Posting}}</p>
+        <p><strong>The pitch:</strong>{{pitch.Pitch}}</p>
+        <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
+    </div>
     {%endfor%}
-<h1 class = 'test' >Yes</h1>
+</div>
 {%endblock%}

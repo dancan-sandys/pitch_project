@@ -1,13 +1,40 @@
 {%extends 'base.html'%}
 {%import 'bootstrap/wtf.html' as wtf%}
 
+{% block styles%}
+
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename = 'reviews.css')}}">
+
+{%endblock%}
+
 {% block content %}
-    <a href="/">Home page</a>
-    <p>{{pitch.category}}</p>
-    <p>{{pitch_reviews}}</p>
 
-    
+<p><em>To see other people's reviews,  you must add a review first!</em></p>
 
-    {{wtf.quick_form(form)}}
-    
+<div class="pitch card">
+    <p class="categoryName" >category: {{pitch.category}}</p>
+
+    <p>Posted on {{pitch.Posting}}</p>
+    <p><strong>The pitch:</strong>{{pitch.Pitch}}</p>
+
+</div>
+
+
+
+<div class=" row">
+    <div class="reviews  col-md-5">
+        <h2>Recent reviews</h2>
+        <h5 class="Category">Category:{{pitch.category}}</h5>
+        <ul class="reviews">
+            {%for review in pitch_reviews%}
+            <li>{{review.comment}}</li>
+            {%endfor%}
+        </ul>
+    </div>
+
+    <div class="col-md-5">
+        {{wtf.quick_form(form)}}
+    </div>
+</div>
 {%endblock%}

@@ -21,7 +21,7 @@
     <p>{{user.user_name}} does not have a profile picture</p>
 
 
-{%endblock%}
+{%endif%}
 
 {%if user == current_user%}
 
@@ -32,3 +32,5 @@
 
     {%endif%}
     </form>
+
+{%endblock%}

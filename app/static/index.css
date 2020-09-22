@@ -1,0 +1,25 @@
+.pitches{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 1200px;
+    padding: 0% 5%;
+    margin-left: 5%;
+}
+
+.pitch{
+    width: 500px;
+    margin: 2%;
+    border: 1px solid black;
+    padding: 3%;
+    color: #37323e;
+    border-radius: 20px;
+}
+
+.pitch:hover{
+    background-color: #37323e;
+    color: white;
+}
+
+.categoryName{
+    font-size: 30px;
+}

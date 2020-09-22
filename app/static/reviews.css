@@ -1,0 +1,20 @@
+.pitch{
+    margin : 0 10%;
+    margin-bottom: 2%;
+    padding: 2%;
+    margin-left: 20%;
+    border: 1px solid black;
+    border-radius: 20px;
+    color: #37323e;
+}
+
+.pitch:hover{
+    color: white;
+    background-color: #37323e;
+}
+
+
+.row{
+    color: #37323e;
+    padding: 0 10%;
+}
