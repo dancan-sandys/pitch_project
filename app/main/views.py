@@ -1,7 +1,7 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request
 from ..models import User, Pitch,Review
 from . import main
-from .. import db
+from .. import db, photos
 from .forms import NewPitchForm, ReviewForm, ProfileForm
 from ..models import Pitch
 from flask_login import login_required, current_user
@@ -75,7 +75,7 @@ def profile(uname):
     return render_template("profile/profile.html", user = user)
 
 
-@main.route('/profile/form/<uname>')
+@main.route('/profile/form/<uname>', methods= ['POST','GET'])
 def profileupdate(uname):
 
     user = User.query.filter_by(user_name = uname).first()
@@ -97,10 +97,10 @@ def profileupdate(uname):
 
         return redirect(url_for('.profile', uname =user.user_name))
 
-    return render_template('profile/updateprofie.html',form =form)
+    return render_template('profile/updateprofile.html',form =form)
 
 @main.route('/user/<uname>/update/pic', methods =['POST'])
-def update_pic():
+def update_pic(uname):
 
     user =User.query.filter_by(user_name = uname).first()
 
@@ -109,6 +109,6 @@ def update_pic():
         filename = photos.save(request.files['photo'])
         path  = f'photos/{filename}'
         user.profile_pic = path
-        b.session.commit()
+        db.session.commit()
 
     return redirect(url_for('.profile', uname = user.user_name))

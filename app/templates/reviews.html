@@ -26,11 +26,11 @@
     <div class="reviews  col-md-5">
         <h2>Recent reviews</h2>
         <h5 class="Category">Category:{{pitch.category}}</h5>
-        <ul class="reviews">
+        <ol class="reviews">
             {%for review in pitch_reviews%}
-            <li>{{review.comment}}</li>
+            <li class="review">{{review.comment}}</li>
             {%endfor%}
-        </ul>
+        </ol>
     </div>
 
     <div class="col-md-5">

@@ -1,3 +1,35 @@
 .profile{
     margin: 5%;
 }
+
+img{
+    width: 80%;
+    height: 60vh;
+    border-radius: 100%;
+    margin: 7%;
+}
+
+.username{
+    text-align: center;
+    font-size: 36px;
+}
+
+.bio{
+    text-align: center;
+    padding-top: 10%;
+}
+
+.nobio{
+    font-size: 36px;
+}
+
+form{
+    width: 40%;
+    text-align: center;
+    margin-left: 10%;
+    height: 10vh;
+}
+
+.button{
+    margin-top: 1%;
+}

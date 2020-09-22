@@ -11,7 +11,7 @@
 {% block content %}
 
 <div class="pitches">
-    {%for pitch in pitches%}
+    {%for pitch in pitches|reverse()%}
     <div class="pitch card">
         <p class="categoryName" >category: {{pitch.category}}</p>
 

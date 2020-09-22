@@ -4,33 +4,49 @@
 
 {%block content%}
 
-{{user.user_name}}
-
-{%if user.User_bio%}
-    <p>{{user.User_bio}}</p>
-{%else%}
-    <p>{{user.user_name}} does not have a bio</p>
-    
-{%endif%}
-    
-{%if user.profile_pic%}
-    <img src="{{user.profile_pic}}" alt=""> 
-
-{%else%}
-
-    <p>{{user.user_name}} does not have a profile picture</p>
 
 
-{%endif%}
+{%block styles%}
+{{super()}}
 
+<link rel="stylesheet" href="{{url_for('static',filename = 'profile.css')}}">
+
+{%endblock%}
+
+<div class="row">
+    <div class="photo col-md-5">
+        {%if user.profile_pic%}
+        <img src="{{url_for('static',filename = user.profile_pic)}}" alt="">
+        <h6 class="username">{{user.user_name}}</h6>
+
+        {%else%}
+
+        <p><a href="/profile/form/{{user.user_name}}">Add bio</a></p>
+
+        {%endif%}
+    </div>
+
+    <div class="bio col-md-5">
+        {%if user.User_bio%}
+        <p class = 'nobio'>{{user.User_bio}}</p>
+        <p><a href="/profile/form/{{user.user_name}}">Update bio</a></p>
+        {%else%}
+        <p class="nobio">{{user.user_name}} does not have a bio</p>
+        <p><a href="/profile/form/{{user.user_name}}">Add bio</a></p>
+        {%endif%}
+    </div>
+
+
+
+</div>
 {%if user == current_user%}
 
-    <form action="{{url_for('main.update_pic', uname = user.user_name)}} " method="post" enctype="multipart/form-data">
-    
-        <input type="file" name="photo" class="form-control" required>
-        <input type="submit" >
+<form action="{{url_for('main.update_pic', uname = user.user_name)}} " method="post" enctype="multipart/form-data">
+    <p>Add/change your profile photo from bellow</p>
+    <input type="file" name="photo" class="form-control" required>
+    <input class="button" type="submit">
 
     {%endif%}
-    </form>
+</form>
 
 {%endblock%}
