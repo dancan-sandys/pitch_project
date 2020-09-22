@@ -2,9 +2,9 @@ from flask import render_template, redirect, url_for
 from ..models import User, Pitch,Review
 from . import main
 from .. import db
-from .forms import NewPitchForm, ReviewForm
+from .forms import NewPitchForm, ReviewForm, ProfileForm
 from ..models import Pitch
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 
 @main.route('/')
@@ -72,3 +72,42 @@ def profile(uname):
         abort(404)
 
     return render_template("profile/profile.html", user = user)
+
+
+@main.route('/profile/form/<uname>')
+def profileupdate(uname):
+
+    user = User.query.filter_by(user_name = uname).first()
+
+    if user is None:
+
+        abort(404)
+
+
+
+
+    form = ProfileForm()
+
+    if form.validate_on_submit():
+        user.User_bio= form.bio.data
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('.profile', uname =user.user_nameS))
+
+    return render_template('profile/updateprofie.html',form =form)
+
+@main.route('/user/<uname>/update/pic', methods =['POST'])
+def update_pic():
+
+    user =User.query.filter_by(user_name = uname).first()
+
+    if 'photo' in request.files:
+
+        filename = photos.save(request.files['photo'])
+        path  = f'photos/{filename}'
+        user.profile_pic = path
+        b.session.commit()
+
+    return redirect(url_for('.profile', uname = user.user_name))

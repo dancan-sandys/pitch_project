@@ -16,4 +16,5 @@ class NewPitchForm(FlaskForm):
 
 class ProfileForm(FlaskForm):
 
-    bio = StringField('Say something about yourself')
+    bio = TextAreaField('Say something about yourself')
+    submit = SubmitField('Submit')
