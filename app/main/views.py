@@ -63,6 +63,7 @@ def newpitch():
     return render_template('newpitch.html', title = title, form = form)
 
 @main.route('/profile/<uname>')
+@login_required
 def profile(uname):
 
     user = User.query.filter_by(user_name = uname).first()
@@ -94,7 +95,7 @@ def profileupdate(uname):
         db.session.add(user)
         db.session.commit()
 
-        return redirect(url_for('.profile', uname =user.user_nameS))
+        return redirect(url_for('.profile', uname =user.user_name))
 
     return render_template('profile/updateprofie.html',form =form)
 
