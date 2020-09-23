@@ -27,8 +27,6 @@ class Review(db.Model):
     __tablename__ = 'reviews'
 
     review_id = db.Column(db.Integer, primary_key = True)
-    # upvotes = db.Column(db.Integer)
-    # downvotes = db.Column(db.Integer)
     comment = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.pitch_id"))
