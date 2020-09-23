@@ -10,7 +10,7 @@
 ## Description
 This app enables the user to pitch his ideas, get reviews of the ideas, see othe people's ideas and review them.
 ## live link
-https://sandyspitch.herokuapp.com/
+https://sandyspitchproject.herokuapp.com/
 
 ## Pre-requisite necesities to run the app
 
