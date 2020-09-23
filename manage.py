@@ -4,7 +4,7 @@ from app.models import Pitch, Review, User
 from flask_migrate import Migrate, MigrateCommand
 
 
-app = create_app('development')
+app = create_app('test')
 
 manager = Manager(app)
 migrate = Migrate(app,db)
@@ -17,6 +17,15 @@ manager.add_command('db', MigrateCommand)
 @manager.shell
 def make_shell_context():
     return dict(app = app, db = db, Pitch = Pitch, Review = Review, User = User)
-if __name__ == "__main__":
-    manager.run()
 
+
+@manager.command
+def test():
+    '''run the tests'''
+
+    import unittest
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner(verbosity=2).run(tests)
+
+if __name__== '__main__':
+    manager.run()
