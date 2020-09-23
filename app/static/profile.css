@@ -33,3 +33,17 @@ form{
 .button{
     margin-top: 1%;
 }
+
+.personalpitches{
+    margin: 5%;
+    padding: 2% 10%;
+    padding-bottom: 20%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 17%;
+    background-color: #e4fde1;
+}
+
+.pitches{
+    font-size: 30px;
+}

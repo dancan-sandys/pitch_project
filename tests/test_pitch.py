@@ -10,8 +10,7 @@ class TestReview(unittest.TestCase):
 
     def tearDown(self):
         Pitch.query.delete()
-        
-
+    
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_pitch,Pitch))

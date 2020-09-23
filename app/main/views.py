@@ -75,7 +75,9 @@ def newpitch():
 def profile(uname):
 
     user = User.query.filter_by(user_name = uname).first()
-    pitches = Pitch.query.filter_by(user_id = user.user_id)
+    user_id =user.user_id
+    pitches = Pitch.query.filter_by(user_id = user_id).all()
+
 
 
     if user is None:

@@ -21,7 +21,7 @@
 
         {%else%}
 
-        <p><a href="/profile/form/{{user.user_name}}">Add bio</a></p>
+        <img src="../../static/photos/pexels-pixabay-42230_1.jpg" alt="">
 
         {%endif%}
     </div>
@@ -35,10 +35,8 @@
         <p><a href="/profile/form/{{user.user_name}}">Add bio</a></p>
         {%endif%}
     </div>
-
-
-
 </div>
+
 {%if user == current_user%}
 
 <form action="{{url_for('main.update_pic', uname = user.user_name)}} " method="post" enctype="multipart/form-data">
@@ -51,13 +49,13 @@
 
 
 <div class="personalpitches">
-    <h4>Your Pitches Include</h4>
+    <h4 class="pitches">Your Pitches Include</h4>
     {%for pitch in pitches|reverse()%}
     <div class="pitch card">
         <p class="categoryName">category: {{pitch.category}}</p>
-
+        <p>Yes</p>
         <p>Posted on {{pitch.Posting}}</p>
-        <p>{{pitch.votes}}</p>
+        <p>Total votes: {{pitch.votes}}</p>
         <p><strong>The pitch:</strong>{{pitch.Pitch}}</p>
         <a href="/reviews/{{pitch.pitch_id}}">View Reviews</a>
     </div>
