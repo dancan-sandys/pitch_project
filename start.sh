@@ -3,4 +3,4 @@ export MAIL_PASSWORD=Stanford1*
 
 
 
-python3.8 manage.py server
+python3.6 manage.py server
